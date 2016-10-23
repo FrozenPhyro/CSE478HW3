@@ -43,7 +43,7 @@ public class FreqTable {
         for (i = 0; i < A.getDomain().size(); i++) {
             FreqRow fr = new FreqRow(A.getDomain().get(i));
             fr.init(classes.size());
-            this.addRow(fr);
+            this.rows.add(fr);
         }
         return this;
     }
@@ -82,9 +82,9 @@ public class FreqTable {
         }
         return this;
     }
+//-----------------------------------------------
 
 //-Adders / Getters / Setters -------------------
-    public void addRow(FreqRow fr) { this.rows.add(fr); }
 
     public String getName() { return this.name; }
     public int getId() { return this.id; }
@@ -94,5 +94,8 @@ public class FreqTable {
 
     public ArrayList<FreqRow> getRows() { return this.rows; }
     public FreqRow getRow(int pos) { return this.rows.get(pos); }
+
+    public ArrayList<Integer> getTotals() { return this.totals; }
+    public int getTotal(int pos) { return this.totals.get(pos); }
 
 }

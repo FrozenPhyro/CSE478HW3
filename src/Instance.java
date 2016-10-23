@@ -2,23 +2,24 @@ import java.util.ArrayList;
 
 /************************************************
  * Created by Lance Schendt on 10/21/2016.
+ * CSCE 478 Fall Homework 3
  ************************************************
  */
 public class Instance {
-// Parameters
+//-Parameters------------------------------------
     private ArrayList<ArrayList<String>> data;
     private ArrayList<String> classes;
+//-----------------------------------------------
 
-
-// Constructor
+//-Constructor-----------------------------------
     public Instance () {
         this.data = new ArrayList<>();
         this.classes = new ArrayList<>();
     }
+//-----------------------------------------------
 
 
-// Adders
-
+//-Adders----------------------------------------
     /********************************************
      * Adds data and classification
      * @param pos - position in the data for the classification
@@ -46,9 +47,9 @@ public class Instance {
             }
         }
     }
+//-----------------------------------------------
 
-
-// Getters
+//-Getters---------------------------------------
     public String getDataItem(int i, int j) {
         return this.data.get(i).get(j);
     }
@@ -62,5 +63,5 @@ public class Instance {
     public String getClassification(int i) { return this.classes.get(i); }
 
     public ArrayList<String> getClasses() { return this.classes; }
-
+//-----------------------------------------------
 }
