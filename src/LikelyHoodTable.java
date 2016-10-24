@@ -51,6 +51,15 @@ public class LikelyHoodTable {
         return this;
     }
 
+//-Table Filler----------------------------------
+    public LikelyHoodTable tableFiller() {
+        this.setTotal();
+        this.calculateClassProbs();
+        this.calculateValueProbs();
+        return this;
+    }
+
+
     public void setTotal() {
         int total = 0; int i;
         for (i = 0; i < this.freq_table.getTotals().size(); i++) {
