@@ -1,3 +1,8 @@
+package NaiveBayes;
+
+import Parser.Attribute;
+import Parser.Instance;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,20 +22,20 @@ public class NBTable {
     private String  name;
     private Integer id;
 //-Frequency Table-------------------------------
-    private ArrayList<ArrayList<Integer>>   counts;
-    private ArrayList<String>               domain;
-    private ArrayList<String>               classes;
-    private ArrayList<Integer>              totals;
+    private HashMap<String, HashMap<String, Integer>>   counts;
+    private ArrayList<String>           domain;
+    private ArrayList<String>           classes;
+    private HashMap<String, Integer>    totals;
 //-----------------------------------------------
 //-Likelyhood Table------------------------------
-    private Integer                         amount;
-    private HashMap<String,Double>          class_prob;
-    private HashMap<String,Double>          value_prob;
+    private Integer                     amount;
+    private HashMap<String,Double>      class_prob;
+    private HashMap<String,Double>      value_prob;
 //-----------------------------------------------
 //-Constructors----------------------------------
     /********************************************
      * Naive Bayes Table Creators
-     * @param a - Attribute table is based one
+     * @param a - Parser.Attribute table is based one
      * @param cl - list of possible classifications
      ********************************************
      */
@@ -39,21 +44,21 @@ public class NBTable {
         this.name = a.getName();
         this.id = a.getID();
         //-Frequency Table Setup-----------------
-            this.counts = new ArrayList<>();
+            this.counts = new HashMap<>();
             for (i = 0; i < a.getDomain().size(); i++) {
-                ArrayList<Integer> row = new ArrayList<>();
+                HashMap<String,Integer> row = new HashMap<>();
                 for (j = 0; j < cl.size(); j++) {
-                    row.add(0);
+                    row.put(cl.get(j), 0);
                 }
-                this.counts.add(row);
+                this.counts.put(a.getDomain().get(i), row);
             }
             this.domain = new ArrayList<>(a.getDomain());
             this.classes = new ArrayList<>(cl);
-            this.totals = new ArrayList<>();
+            this.totals = new HashMap<>();
             for (i = 0; i < cl.size(); i++) {
-                this.totals.add(0);
+                this.totals.put(cl.get(i), 0);
             }
-        //-Likelyhood Table Setup-----------------
+        //-Likelihood Table Setup-----------------
             this.class_prob = new HashMap<>();
             this.amount = 0;
             for (i = 0; i < cl.size(); i++) {
@@ -69,20 +74,20 @@ public class NBTable {
         this.name = a.getName();
         this.id = a.getID();
         //-Frequency Table Setup-----------------
-            this.counts = new ArrayList<>();
+            this.counts = new HashMap<>();
             for (i = 0; i < a.getDomain().size(); i++) {
-                ArrayList<Integer> row = new ArrayList<>();
+                HashMap<String,Integer> row = new HashMap<>();
                 for (j = 0; j < cl.length; j++) {
-                    row.add(0);
+                    row.put(cl[j], 0);
                 }
-                this.counts.add(row);
+                this.counts.put(a.getDomain().get(i), row);
             }
             this.domain = new ArrayList<>(a.getDomain());
             this.classes = new ArrayList<>();
-            this.totals = new ArrayList<>();
+            this.totals = new HashMap<>();
             for (i = 0; i < cl.length; i++) {
                 this.classes.add(cl[i]);
-                this.totals.add(0);
+                this.totals.put(cl[i], 0);
             }
         //-Likelyhood Table Setup----------------
             this.amount = 0;
@@ -119,7 +124,7 @@ public class NBTable {
             //-totals for classes----------------
             for (b = 0; b < this.classes.size(); b++) {
                 if (i.getClasses().get(a).equals(this.classes.get(b))) {
-                    this.totals.set(b,this.totals.get(b) + 1);
+                    this.totals.put(this.classes.get(b), this.totals.get(b) + 1);
                 }
             }
         }
@@ -157,11 +162,31 @@ public class NBTable {
 //-----------------------------------------------
 //-Adders----------------------------------------
     public void addOne(int d, int c) {
-        this.counts.get(d).set(c,this.counts.get(d).get(c) + 1);
+        String cl = this.classes.get(c);
+        String dm = this.domain.get(d);
+        int i = this.getCount(d, c);
+        this.counts.get(dm).put(cl, i+1);
     }
 
 //-Getters---------------------------------------
     public int getCount(int d, int c) {
-        return this.counts.get(d).get(c);
+        String cl = this.classes.get(c);
+        String dm = this.domain.get(d);
+        return this.counts.get(dm).get(cl);
+    }
+    public int getCount(String dm, String cl) {
+        return this.counts.get(dm).get(cl);
+    }
+
+    public int getTotal(String c) {
+        return this.totals.get(c);
+    }
+
+    public double getValProb(String i) {
+        return this.value_prob.get(i);
+    }
+
+    public double getClassProb(String c) {
+        return this.class_prob.get(c);
     }
 }

@@ -1,3 +1,5 @@
+package Parser;
+
 import java.util.ArrayList;
 
 /************************************************
@@ -22,29 +24,20 @@ public class Instance {
 //-Adders----------------------------------------
     /********************************************
      * Adds data and classification
-     * @param pos - position in the data for the classification
      * @param data - The data being added
      ********************************************
      */
-    public void addData(int pos, String[] data) {
+    public void addData(String[] data) {
         ArrayList<String> row = new ArrayList<>();
         for (int i = 0; i < data.length; i++) {
-            if (i == pos) {
-                this.classes.add(data[i]);
-            } else {
-                row.add(data[i]);
-            }
+            row.add(data[i]);
         }
         this.data.add(row);
     }
-    public void addData(int pos, ArrayList<String> data) {
+    public void addData(ArrayList<String> data) {
         ArrayList<String> row = new ArrayList<>();
         for (int i = 0; i < data.size(); i++) {
-            if (i == pos) {
-                this.classes.add(data.get(i));
-            } else {
-                row.add(data.get(i));
-            }
+            row.add(data.get(i));
         }
     }
 //-----------------------------------------------
