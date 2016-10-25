@@ -1,12 +1,9 @@
-import NaiveBayes.*;
+package NaiveBayes;
+
 import Parser.*;
 
-import java.util.ArrayList;
-
-/************************************************
- * Created by Lance Schendt on 10/24/2016.
- * CSCE 478 Fall 2016 Homework 3
- ************************************************
+/**
+ * Created by FrozenPhyro on 10/25/2016.
  */
 public class Main {
     public static void main(String[] args){
@@ -16,7 +13,6 @@ public class Main {
         String delim = "";
         String output_object = "";
         String output_file = "";
-        double m = 0.0;
 
         int i;
         for (i = 0; i < args.length; i = i+2) {
@@ -34,21 +30,15 @@ public class Main {
                 }
                 case "-oo" : { output_object = args[i+1]; break; }
                 case "-of" : { output_file = args[i+1]; break; }
-                case "-m" : { m = Double.parseDouble(args[i+1]); break; }
             }
         }
+
         Parser parser = new Parser();
         Format format = parser.formatParser(format_file);
         Instance train = parser.instanceParser(training_file, format, delim);
         Instance test = parser.instanceParser(testing_file, format, delim);
 
-        NaiveBayes nb = new NaiveBayes(train, test, format.getClassification(), m);
-        nb.Setup(format.getAttributes(), format.getClassification().getDomain());
-        nb.NaiveBayesLearn(train);
-
-        // print created nb object
-
-        ArrayList<String> results = nb.Run(train);
+        NaiveBayes nb = new NaiveBayes(train, test, format.getClassification());
 
     }
 }
