@@ -15,6 +15,7 @@ public class Main {
         String testing_file = "";
         String delim = "";
         String output_object = "";
+        String output_results = "";
         String output_file = "";
         double m = 0.0;
 
@@ -46,9 +47,12 @@ public class Main {
         nb.Setup(format.getAttributes(), format.getClassification().getDomain());
         nb.NaiveBayesLearn(train);
 
-        // print created nb object
-
+        if (!output_object.equals("")) {
+            //TODO: Object Printer
+        }
         ArrayList<String> results = nb.Run(train);
-
+        if (!output_file.equals("")) {
+            //TODO: Write to file
+        }
     }
 }
