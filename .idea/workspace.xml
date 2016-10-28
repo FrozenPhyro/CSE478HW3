@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f80ac48-5c6a-4c88-bf7c-c0a37ecb9bd6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Bayes/Result.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Testing_Printing/Error.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Testing_Printing/Printing.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bayes/Bayes.java" afterPath="$PROJECT_DIR$/src/Bayes/Bayes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Parsing_Setup/Attribute.java" afterPath="$PROJECT_DIR$/src/Parsing_Setup/Attribute.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Parsing_Setup/Format.java" afterPath="$PROJECT_DIR$/src/Parsing_Setup/Format.java" />
     </list>
     <ignored path="HW3Testing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -702,7 +694,14 @@
       <option name="project" value="LOCAL" />
       <updated>1477621307276</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Error Functions and Printing Functions Completed">
+      <created>1477682766118</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1477682766118</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -774,7 +773,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lots of Changes, but algorithm is complete.&#10;Working on testing and reporting." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lots of Changes, but algorithm is complete.&#10;Working on testing and reporting." />
+    <MESSAGE value="Error Functions and Printing Functions Completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error Functions and Printing Functions Completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
