@@ -1,0 +1,17 @@
+class,domain democrat republican
+handicapped-infants,domain y n ?
+water-project-cost-sharing,domain y n ?
+adoption-of-the-budget-resolution,domain y n ?
+physician-fee-freeze,domain y n ?
+el-salvador-aid,domain y n ?
+religious-groups-in-schools,domain y n ?
+anti-satellite-test-ban,domain y n ?
+aid-to-nicaraguan-contras,domain y n ?
+mx-missile,domain y n ?
+immigration,domain y n ?
+synfuels-corporation-cutback,domain y n ?
+education-spending,domain y n ?
+superfund-right-to-sue,domain y n ?
+crime,domain y n ?
+duty-free-exports,domain y n ?
+export-administration-act-south-africa,domain y n ?

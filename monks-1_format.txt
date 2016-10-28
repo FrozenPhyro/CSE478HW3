@@ -1,0 +1,8 @@
+class,domain 0 1
+a1,domain 1 2 3
+a2,domain 1 2 3
+a3,domain 1 2
+a4,domain 1 2 3
+a5,domain 1 2 3 4
+a6,domain 1 2
+key,item

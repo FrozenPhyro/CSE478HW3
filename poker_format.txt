@@ -1,0 +1,11 @@
+s1,domain 1 2 3 4
+c1,domain 1 2 3 4 5 6 7 8 9 10 11 12 13
+s2,domain 1 2 3 4
+c2,domain 1 2 3 4 5 6 7 8 9 10 11 12 13
+s3,domain 1 2 3 4
+c3,domain 1 2 3 4 5 6 7 8 9 10 11 12 13
+s4,domain 1 2 3 4
+c4,domain 1 2 3 4 5 6 7 8 9 10 11 12 13
+s5,domain 1 2 3 4
+c5,domain 1 2 3 4 5 6 7 8 9 10 11 12 13
+class,domain 0 1 2 3 4 5 6 7 8 9
