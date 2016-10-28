@@ -1,58 +1,62 @@
-import NaiveBayes.*;
-import Parser.*;
+import Parsing_Setup.*;
+import Bayes.*;
 
 import java.util.ArrayList;
 
-/************************************************
- * Created by Lance Schendt on 10/24/2016.
- * CSCE 478 Fall 2016 Homework 3
- ************************************************
+/**
+ * Created by FrozenPhyro on 10/27/2016.
  */
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String format_file = "";
         String training_file = "";
         String testing_file = "";
         String delim = "";
-        String output_object = "";
-        String output_results = "";
+        Double m = 1.0;
         String output_file = "";
-        double m = 0.0;
 
+        //-Parse Inputs--------------------------
         int i;
-        for (i = 0; i < args.length; i = i+2) {
+        for (i = 0; i < args.length; i++) {
             switch (args[i]) {
                 case "-f" : { format_file = args[i+1]; break; }
                 case "-tr" : { training_file = args[i+1]; break; }
                 case "-te" : { testing_file = args[i+1]; break; }
                 case "-d" : {
-                    if (args[i+1].equals("comma")) {
-                        delim = ",";
-                    } else {
+                    if (args[i + 1].equals("space")) {
                         delim = " ";
+                    } else {
+                        delim = args[i + 1];
                     }
-                    break;
-                }
-                case "-oo" : { output_object = args[i+1]; break; }
+                    break; }
                 case "-of" : { output_file = args[i+1]; break; }
                 case "-m" : { m = Double.parseDouble(args[i+1]); break; }
             }
         }
+
+        //-Create Parsed Objects-----------------
         Parser parser = new Parser();
         Format format = parser.formatParser(format_file);
-        Instance train = parser.instanceParser(training_file, format, delim);
-        Instance test = parser.instanceParser(testing_file, format, delim);
+        Instance training = parser.instanceParser(training_file,format,delim);
+        Instance testing = parser.instanceParser(testing_file,format,delim);
 
-        NaiveBayes nb = new NaiveBayes(train, test, format.getClassification(), m);
-        nb.Setup(format.getAttributes(), format.getClassification().getDomain());
-        nb.NaiveBayesLearn(train);
+        //-Initialize Bayes----------------------
+        Bayes bayes = new Bayes(format, training, m);
+        bayes.NaiveBayesTrain(format, training);
 
-        if (!output_object.equals("")) {
-            //TODO: Object Printer
-        }
-        ArrayList<String> results = nb.Run(train);
-        if (!output_file.equals("")) {
-            //TODO: Write to file
+        //-Run Testing Set-----------------------
+        ArrayList<String> output = new ArrayList<>();
+        for (m = 1.0; m < 10; m = m + 0.1) {
+            bayes.setM(m);
+            int count = 0;
+            for (i = 0; i < testing.getData().size(); i++) {
+                ArrayList<String> sample = testing.getDataRow(i);
+                String result = bayes.ClassifyNewInstance(sample);
+                if (result.equals(testing.getLabel(i))) {
+                    count++;
+                }
+            }
+            System.out.println((double) count / i);
         }
     }
 }
