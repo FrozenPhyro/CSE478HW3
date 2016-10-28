@@ -28,6 +28,7 @@ public class Format {
     public ArrayList<String> getLabels() {
         return this.classification.getDomain();
     }
+    public String getLabel(int i) { return this.classification.getDomainValue(i); }
     public Attribute getAttribute(int i) {
         return this.attributes.get(i);
     }

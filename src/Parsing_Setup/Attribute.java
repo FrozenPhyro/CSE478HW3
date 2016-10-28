@@ -22,6 +22,7 @@ public class Attribute {
     }
 //-----------------------------------------------
 //-Getters---------------------------------------
+    public String getName() { return this.getName(); }
     public int getID() {
         return this.id;
     }

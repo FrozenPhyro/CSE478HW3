@@ -70,9 +70,10 @@ public class Bayes {
      * @return the prediction of the algorithm
      ********************************************
      */
-    public String ClassifyNewInstance(ArrayList<String> X) {
+    public Result ClassifyNewInstance(ArrayList<String> X) {
 
         //variables for function use
+        Result result = new Result();
         String prediction = "";
         String label = "";
         double max_prob = 0.0;
@@ -109,6 +110,7 @@ public class Bayes {
 
             //perform the approximation of Bayes.Bayes algorithm
             pcix = pci * pxci;
+            result.probs.add(pcix);
 
             //if the highest probability, set prediction each to class,
             //and set the max_prob found to compare against later.
@@ -117,7 +119,8 @@ public class Bayes {
                 prediction = this.labels.get(i);
             }
         }
-        return prediction;
+        result.result = prediction;
+        return result;
     }
 //-----------------------------------------------
 //-Utlities--------------------------------------
@@ -198,6 +201,7 @@ public class Bayes {
         return p;
     }
 
+    public ArrayList<NBTable> getTables() { return this.tables; }
     public void setM(double m) { this.m = m; }
     public void setP(double p) { this.p = p;}
 //-----------------------------------------------
